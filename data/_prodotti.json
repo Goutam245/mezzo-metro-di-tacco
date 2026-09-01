@@ -1,0 +1,918 @@
+[
+ {
+  "id": "sa-01",
+  "nome": "Sandalo in cuoio con cinturino e borchie",
+  "categoria": "sandali",
+  "img": "sa-01",
+  "alt": "Sandalo in cuoio marrone con fasce incrociate, cinturino alla caviglia e borchie dorate",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 0
+ },
+ {
+  "id": "sa-02",
+  "nome": "Sandalo a due fasce con borchie",
+  "categoria": "sandali",
+  "img": "sa-02",
+  "alt": "Sandalo nero a due fasce con borchie e pietre dorate, suola cucita",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 1
+ },
+ {
+  "id": "sa-03",
+  "nome": "Sandalo basso con cinturino alla caviglia",
+  "categoria": "sandali",
+  "img": "sa-03",
+  "alt": "Sandalo nero basso con fascia sul collo del piede e cinturino alla caviglia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 2
+ },
+ {
+  "id": "sa-04",
+  "nome": "Sandalo con fasce incrociate e fibbia",
+  "categoria": "sandali",
+  "img": "sa-04",
+  "alt": "Sandalo nero con fasce incrociate, fibbia quadrata dorata e borchie",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 3
+ },
+ {
+  "id": "sa-05",
+  "nome": "Sandalo con perline in cuoio naturale",
+  "categoria": "sandali",
+  "img": "sa-05",
+  "alt": "Sandalo in cuoio naturale con fascia centrale, perline in legno e cinturino",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 4
+ },
+ {
+  "id": "sa-06",
+  "nome": "Sandalo con perline, tomaia bianca",
+  "categoria": "sandali",
+  "img": "sa-06",
+  "alt": "Sandalo bianco con fascia centrale, perline chiare e cinturino alla caviglia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 5
+ },
+ {
+  "id": "sa-07",
+  "nome": "Sandalo intrecciato a mano",
+  "categoria": "sandali",
+  "img": "sa-07",
+  "alt": "Sandalo in cuoio con tomaia intrecciata a mano e fascia traforata",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 6
+ },
+ {
+  "id": "sa-08",
+  "nome": "Sandalo a due fasce con fibbie",
+  "categoria": "sandali",
+  "img": "sa-08",
+  "alt": "Sandalo nero a due fasce con fibbie dorate e borchie sulla tomaia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 7
+ },
+ {
+  "id": "sa-09",
+  "nome": "Sandalo con ricamo a foglie",
+  "categoria": "sandali",
+  "img": "sa-09",
+  "alt": "Sandalo nero con fascia ricamata a foglie e piccole pietre chiare",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 8
+ },
+ {
+  "id": "sa-10",
+  "nome": "Sandalo a fascia in cuoio",
+  "categoria": "sandali",
+  "img": "sa-10",
+  "alt": "Sandalo basso in cuoio con una sola fascia larga sul collo del piede",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 9
+ },
+ {
+  "id": "sa-11",
+  "nome": "Sandalo slingback punta aperta",
+  "categoria": "sandali",
+  "img": "sa-11",
+  "alt": "Sandalo nero a punta aperta con cinturino dietro il tallone",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 10
+ },
+ {
+  "id": "sa-12",
+  "nome": "Sandalo a due fasce con cinturino",
+  "categoria": "sandali",
+  "img": "sa-12",
+  "alt": "Sandalo piatto in cuoio a due fasce con cinturino e fibbia dorata",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 11
+ },
+ {
+  "id": "sa-13",
+  "nome": "Sandalo a due fasce con tacco basso",
+  "categoria": "sandali",
+  "img": "sa-13",
+  "alt": "Sandalo in cuoio a due fasce con tacco basso squadrato",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 12
+ },
+ {
+  "id": "sa-14",
+  "nome": "Slingback aperta con tacco basso",
+  "categoria": "sandali",
+  "img": "sa-14",
+  "alt": "Sandalo slingback in cuoio a punta aperta con tacco basso in legno",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 13
+ },
+ {
+  "id": "sa-15",
+  "nome": "Sandalo con fasce intrecciate",
+  "categoria": "sandali",
+  "img": "sa-15",
+  "alt": "Sandalo piatto in cuoio con fasce intrecciate e cinturino alla caviglia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 14
+ },
+ {
+  "id": "sa-16",
+  "nome": "Sandalo con fascia laminata",
+  "categoria": "sandali",
+  "img": "sa-16",
+  "alt": "Sandalo piatto con fascia laminata argento e cinturino sottile",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 15
+ },
+ {
+  "id": "sa-17",
+  "nome": "Sandalo bicolore con tacco basso",
+  "categoria": "sandali",
+  "img": "sa-17",
+  "alt": "Sandalo con fascia nera, fondo cuoio e tacco basso in legno",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 16
+ },
+ {
+  "id": "sa-18",
+  "nome": "Sandalo a due fasce, tacco basso",
+  "categoria": "sandali",
+  "img": "sa-18",
+  "alt": "Sandalo con due fasce nere, sottopiede cuoio e tacco basso",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 17
+ },
+ {
+  "id": "sa-19",
+  "nome": "Sandalo a fascia con fibbia",
+  "categoria": "sandali",
+  "img": "sa-19",
+  "alt": "Sandalo nero a fascia larga con fibbia rettangolare dorata",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 18
+ },
+ {
+  "id": "sa-20",
+  "nome": "Sandalo traforato con cinturino",
+  "categoria": "sandali",
+  "img": "sa-20",
+  "alt": "Sandalo chiuso in punta, tomaia traforata beige e cinturino dietro",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 19
+ },
+ {
+  "id": "sa-21",
+  "nome": "Sandalo con fasce incrociate",
+  "categoria": "sandali",
+  "img": "sa-21",
+  "alt": "Sandalo nero con fasce incrociate sul collo del piede e tacco basso",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 20
+ },
+ {
+  "id": "sa-22",
+  "nome": "Sandalo basso con fasce a T",
+  "categoria": "sandali",
+  "img": "sa-22",
+  "alt": "Sandalo nero basso con fascia a T e cinturino dietro il tallone",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 21
+ },
+ {
+  "id": "sa-23",
+  "nome": "Sandalo a gabbia con fibbia",
+  "categoria": "sandali",
+  "img": "sa-23",
+  "alt": "Sandalo nero a gabbia con fasce sottili e fibbia alla caviglia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 22
+ },
+ {
+  "id": "sa-24",
+  "nome": "Sabot con zeppa in camoscio",
+  "categoria": "sandali",
+  "img": "sa-24",
+  "alt": "Sabot in camoscio chiaro con fascia traforata e zeppa bassa",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 23
+ },
+ {
+  "id": "sa-25",
+  "nome": "Sandalo incrociato con zeppa",
+  "categoria": "sandali",
+  "img": "sa-25",
+  "alt": "Sandalo in camoscio marrone con fasce incrociate, cinturino e zeppa",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 24
+ },
+ {
+  "id": "sa-26",
+  "nome": "Sandalo a fascia con fondo basso",
+  "categoria": "sandali",
+  "img": "sa-26",
+  "alt": "Sandalo nero in pelle con fascia larga e fondo in gomma basso",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 25
+ },
+ {
+  "id": "sa-27",
+  "nome": "Sandalo a gabbia chiaro",
+  "categoria": "sandali",
+  "img": "sa-27",
+  "alt": "Sandalo beige a gabbia con fasce larghe e cinturino alla caviglia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 26
+ },
+ {
+  "id": "sa-28",
+  "nome": "Sandalo incrociato in pelle",
+  "categoria": "sandali",
+  "img": "sa-28",
+  "alt": "Sandalo nero con due fasce incrociate e cinturino, fondo basso",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 27
+ },
+ {
+  "id": "sa-29",
+  "nome": "Sabot con tacco in camoscio",
+  "categoria": "sandali",
+  "img": "sa-29",
+  "alt": "Sabot in camoscio chiaro a punta aperta con tacco largo",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 28
+ },
+ {
+  "id": "sa-30",
+  "nome": "Sandalo con plateau e cinturino",
+  "categoria": "sandali",
+  "img": "sa-30",
+  "alt": "Sandalo nero in camoscio con plateau, tacco alto e cinturino",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 29
+ },
+ {
+  "id": "sa-31",
+  "nome": "Sandalo con zeppa in camoscio",
+  "categoria": "sandali",
+  "img": "sa-31",
+  "alt": "Sandalo con fasce in camoscio marrone e zeppa in cuoio",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 30
+ },
+ {
+  "id": "sa-32",
+  "nome": "Sandalo con zeppa e fascia gioiello",
+  "categoria": "sandali",
+  "img": "sa-32",
+  "alt": "Sandalo con zeppa, fascia intrecciata e dettaglio gioiello scuro",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 31
+ },
+ {
+  "id": "sa-33",
+  "nome": "Sandalo incrociato con zeppa",
+  "categoria": "sandali",
+  "img": "sa-33",
+  "alt": "Sandalo nero con fasce incrociate, cinturino e zeppa in cuoio",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 32
+ },
+ {
+  "id": "sa-34",
+  "nome": "Sandalo gioiello con perline",
+  "categoria": "sandali",
+  "img": "sa-34",
+  "alt": "Sandalo beige a T con perline chiare e pietre, cinturino alla caviglia",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 33
+ },
+ {
+  "id": "sa-35",
+  "nome": "Sandalo in cuoio traforato",
+  "categoria": "sandali",
+  "img": "sa-35",
+  "alt": "Paio di sandali in cuoio naturale con tomaia traforata e cinturino",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 34
+ },
+ {
+  "id": "sa-36",
+  "nome": "Sandalo laminato con fasce sottili",
+  "categoria": "sandali",
+  "img": "sa-36",
+  "alt": "Sandalo fucsia laminato con fasce sottili incrociate e punta quadrata",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 35
+ },
+ {
+  "id": "st-01",
+  "nome": "Stivaletto in camoscio cammello",
+  "categoria": "stivaletti",
+  "img": "st-01",
+  "alt": "Stivaletto in camoscio color cammello a punta, con tacco squadrato e cerniera laterale",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 36
+ },
+ {
+  "id": "st-02",
+  "nome": "Stivaletto in pelle nera",
+  "categoria": "stivaletti",
+  "img": "st-02",
+  "alt": "Stivaletto nero in pelle liscia a punta, con tacco squadrato e cerniera laterale",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 37
+ },
+ {
+  "id": "st-03",
+  "nome": "Stivaletto in camoscio cacao",
+  "categoria": "stivaletti",
+  "img": "st-03",
+  "alt": "Stivaletto in camoscio marrone scuro a punta, con tacco squadrato",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 38
+ },
+ {
+  "id": "st-04",
+  "nome": "Stivaletto in camoscio beige",
+  "categoria": "stivaletti",
+  "img": "st-04",
+  "alt": "Stivaletto in camoscio beige a punta, con tacco squadrato",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 39
+ },
+ {
+  "id": "tx-01",
+  "nome": "Texano nero con ricami",
+  "categoria": "texani",
+  "img": "tx-01",
+  "alt": "Stivale texano nero al polpaccio con ricami a contrasto e tacco squadrato",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 40
+ },
+ {
+  "id": "tx-02",
+  "nome": "Texano bianco con risvolto",
+  "categoria": "texani",
+  "img": "tx-02",
+  "alt": "Stivale texano bianco alto con risvolto sul davanti e punta affilata",
+  "taglie": [
+   "35",
+   "36",
+   "37",
+   "38",
+   "39",
+   "40",
+   "41"
+  ],
+  "attivo": true,
+  "ordine": 41
+ },
+ {
+  "id": "ab-01",
+  "nome": "Abito lungo",
+  "categoria": "abiti",
+  "img": "ab-01",
+  "alt": "Abito lungo fucsia con scollo profondo e spalline sottili",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 42
+ },
+ {
+  "id": "ab-02",
+  "nome": "Abito lungo a balze",
+  "categoria": "abiti",
+  "img": "ab-02",
+  "alt": "Abito lungo verde ottanio con balze sulla gonna e scollo annodato",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 43
+ },
+ {
+  "id": "ab-03",
+  "nome": "Abito lungo con cintura",
+  "categoria": "abiti",
+  "img": "ab-03",
+  "alt": "Abito lungo fucsia con scollo incrociato, cintura in vita e spacco",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 44
+ },
+ {
+  "id": "ab-04",
+  "nome": "Abito corto in pizzo",
+  "categoria": "abiti",
+  "img": "ab-04",
+  "alt": "Abito corto bordeaux con corpetto in pizzo e gonna svasata",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 45
+ },
+ {
+  "id": "ab-05",
+  "nome": "Abito corto a palloncino",
+  "categoria": "abiti",
+  "img": "ab-05",
+  "alt": "Abito corto beige con spalline sottili e gonna a palloncino",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 46
+ },
+ {
+  "id": "ab-06",
+  "nome": "Abito corto nero",
+  "categoria": "abiti",
+  "img": "ab-06",
+  "alt": "Abito corto nero aderente con scollo quadrato e spalline larghe",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 47
+ },
+ {
+  "id": "ab-07",
+  "nome": "Abito corto svasato",
+  "categoria": "abiti",
+  "img": "ab-07",
+  "alt": "Abito corto verde scuro in raso con gonna svasata e schiena scoperta",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 48
+ },
+ {
+  "id": "ab-08",
+  "nome": "Abito lungo monospalla",
+  "categoria": "abiti",
+  "img": "ab-08",
+  "alt": "Abito lungo azzurro monospalla con spacco laterale",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 49
+ },
+ {
+  "id": "ab-09",
+  "nome": "Abito corto con pizzo",
+  "categoria": "abiti",
+  "img": "ab-09",
+  "alt": "Abito corto nero con maniche e scollo in pizzo",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 50
+ },
+ {
+  "id": "ab-10",
+  "nome": "Abito midi con scollo in pizzo",
+  "categoria": "abiti",
+  "img": "ab-10",
+  "alt": "Abito midi nero con scollo profondo bordato di pizzo e gonna ampia",
+  "taglie": [
+   "40",
+   "42",
+   "44",
+   "46",
+   "48"
+  ],
+  "attivo": true,
+  "ordine": 51
+ }
+]
