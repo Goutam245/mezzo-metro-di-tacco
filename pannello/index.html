@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pannello — Mezzo Metro di Tacco</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF8F5">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32">
+<style>
+@font-face{font-family:"Plex";font-style:normal;font-weight:100 700;font-display:swap;
+  src:url(../assets/fonts/plexsans-latin.woff2) format("woff2")}
+:root{
+  --cream:#FBF8F5;--cream-2:#F4EEE9;--plate:#fff;--blush:#EFD9D3;--blush-2:#F8EDEA;
+  --ink:#191614;--ink-2:#4A423E;--ink-3:#6F6560;--line:#E6DDD6;--line-2:#D6C9C1;
+  --ok:#2F6B4F;--ko:#9B3226;--r:2px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);
+  font-family:"Plex",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.6}
+h1,h2,h3,p{margin:0}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1080px;margin-inline:auto;padding:0 16px}
+
+/* ---- accesso ---- */
+.gate{min-height:100vh;display:grid;place-items:center;padding:24px}
+.gate form{width:100%;max-width:360px}
+.gate h1{font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+
+/* ---- testata ---- */
+.top{position:sticky;top:0;z-index:20;background:var(--cream);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:12px;min-height:60px;flex-wrap:wrap}
+.top h1{font-size:.86rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-right:auto}
+.tabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);background:var(--cream)}
+.tabs button{
+  appearance:none;background:none;border:0;border-bottom:2px solid transparent;cursor:pointer;
+  padding:12px 14px;font-size:.82rem;letter-spacing:.04em;color:var(--ink-3);white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+
+/* ---- moduli ---- */
+.pan{padding:26px 0 90px}
+.blocco{background:var(--plate);border:1px solid var(--line);border-radius:var(--r);padding:20px;margin-bottom:18px}
+.blocco > h2{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+.campo{margin-bottom:16px}
+.campo:last-child{margin-bottom:0}
+.campo label{display:block;font-size:.76rem;letter-spacing:.06em;color:var(--ink-2);margin-bottom:6px}
+.campo .aiuto{font-size:.74rem;color:var(--ink-3);margin-top:5px}
+input[type=text],input[type=password],input[type=url],input[type=email],textarea,select{
+  width:100%;min-height:46px;padding:11px 13px;background:var(--cream);
+  border:1px solid var(--line-2);border-radius:var(--r);outline:0}
+textarea{min-height:88px;resize:vertical;line-height:1.5}
+input:focus,textarea:focus,select:focus{border-color:var(--ink)}
+.due{display:grid;gap:16px}
+@media(min-width:700px){.due{grid-template-columns:1fr 1fr}}
+
+.sw{display:flex;align-items:center;gap:12px;cursor:pointer;user-select:none}
+.sw input{position:absolute;opacity:0;width:0;height:0}
+.sw i{width:44px;height:25px;border-radius:25px;background:var(--line-2);position:relative;transition:background .2s;flex:none}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;
+  background:#fff;transition:transform .2s}
+.sw input:checked + i{background:var(--ink)}
+.sw input:checked + i::after{transform:translateX(19px)}
+.sw input:focus-visible + i{outline:2px solid var(--ink);outline-offset:2px}
+.sw span{font-size:.9rem}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:44px;padding:0 18px;
+  border:1px solid transparent;border-radius:var(--r);cursor:pointer;text-decoration:none;
+  font-size:.76rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.btn-1{background:var(--ink);color:var(--cream)}
+.btn-2{background:transparent;border-color:var(--line-2);color:var(--ink)}
+.btn-2:hover{border-color:var(--ink)}
+.btn-ko{background:transparent;border-color:var(--line-2);color:var(--ko)}
+.btn-ko:hover{border-color:var(--ko)}
+.btn-sm{min-height:36px;padding:0 12px;font-size:.7rem}
+.riga-btn{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ---- categorie ---- */
+.cat{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cat:last-child{border-bottom:0}
+.cat input[type=text]{min-height:40px}
+.cat .cod{font-size:.72rem;color:var(--ink-3);min-width:78px}
+.cat-btn{display:flex;gap:6px}
+
+/* ---- prodotti ---- */
+.barra-p{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.barra-p input[type=text]{flex:1 1 200px;min-height:42px}
+.barra-p select{width:auto;min-width:150px;min-height:42px}
+.lista{display:grid;gap:10px}
+.pr{display:flex;gap:12px;align-items:center;background:var(--plate);border:1px solid var(--line);
+  border-radius:var(--r);padding:10px}
+.pr-img{width:56px;height:70px;flex:none;background:var(--cream-2);border-radius:var(--r);overflow:hidden}
+.pr-img img{width:100%;height:100%;object-fit:cover}
+.pr-t{flex:1;min-width:0}
+.pr-t b{display:block;font-weight:450;font-size:.92rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pr-t small{color:var(--ink-3);font-size:.74rem}
+.tag{display:inline-block;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 7px;border-radius:var(--r);background:var(--cream-2);color:var(--ink-2);margin-left:6px}
+.tag.ko{background:var(--blush);color:var(--ink)}
+
+/* ---- finestra ---- */
+.fin-bg{position:fixed;inset:0;background:rgba(25,22,20,.45);z-index:40;display:none}
+.fin-bg.on{display:block}
+.fin{position:fixed;z-index:41;inset:auto 0 0 0;background:var(--cream);max-height:92vh;overflow-y:auto;
+  border-radius:10px 10px 0 0;padding:0 16px 20px;display:none}
+.fin.on{display:block}
+@media(min-width:700px){
+  .fin{inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(640px,94vw);
+    border-radius:var(--r);max-height:88vh;padding:0 24px 24px}
+}
+.fin-top{position:sticky;top:0;background:var(--cream);display:flex;align-items:center;
+  justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);margin-bottom:18px;z-index:2}
+.fin-top h2{font-size:1rem;font-weight:500}
+.fin-close{background:none;border:0;cursor:pointer;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);padding:6px}
+
+.taglie{display:flex;flex-wrap:wrap;gap:7px}
+.taglia{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:var(--r);
+  padding:5px 8px;font-size:.82rem;background:var(--plate)}
+.taglia button{background:none;border:0;cursor:pointer;color:var(--ink-3);line-height:1;font-size:1rem;padding:0 2px}
+.anteprima{width:104px;height:130px;background:var(--cream-2);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.anteprima img{width:100%;height:100%;object-fit:cover}
+
+/* ---- salvataggio ---- */
+.salva{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--cream);
+  border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.salva-in{max-width:1080px;margin-inline:auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.stato{font-size:.8rem;color:var(--ink-3);margin-right:auto}
+.stato.ok{color:var(--ok)}
+.stato.ko{color:var(--ko)}
+.avviso{background:var(--blush-2);border:1px solid var(--blush);border-radius:var(--r);
+  padding:13px 15px;font-size:.86rem;margin-bottom:18px}
+.vuoto{color:var(--ink-3);padding:24px 0;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════ ACCESSO ══════════════════ -->
+<div class="gate" id="gate">
+  <form id="form-accesso">
+    <h1>Pannello</h1>
+    <p style="color:var(--ink-3);font-size:.88rem;margin:8px 0 22px">Mezzo Metro di Tacco</p>
+    <div class="campo">
+      <label for="chiave">Parola d’accesso</label>
+      <input type="password" id="chiave" autocomplete="current-password" required>
+    </div>
+    <button class="btn btn-1" style="width:100%" type="submit">Entra</button>
+    <p class="stato" id="stato-accesso" style="margin-top:14px"></p>
+  </form>
+</div>
+
+<!-- ══════════════════ PANNELLO ══════════════════ -->
+<div id="app" hidden>
+  <div class="top">
+    <div class="wrap top-in">
+      <h1>Pannello</h1>
+      <a class="btn btn-2 btn-sm" href="../index.html" target="_blank" rel="noopener">Vedi il sito</a>
+      <button class="btn btn-2 btn-sm" id="esci" type="button">Esci</button>
+    </div>
+    <div class="wrap">
+      <div class="tabs" role="tablist">
+        <button role="tab" data-tab="testi" aria-selected="true">Testi della home</button>
+        <button role="tab" data-tab="catalogo" aria-selected="false">Catalogo</button>
+        <button role="tab" data-tab="messaggi" aria-selected="false">Messaggi WhatsApp</button>
+        <button role="tab" data-tab="impostazioni" aria-selected="false">Impostazioni</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap pan">
+    <div id="avviso-locale" class="avviso" hidden></div>
+
+    <!-- ── TESTI ── -->
+    <section id="t-testi">
+      <div class="blocco">
+        <h2>Fascia in cima al sito</h2>
+        <label class="sw"><input type="checkbox" id="banner-attivo"><i></i><span>Mostra la fascia</span></label>
+        <div class="campo" style="margin-top:14px">
+          <label for="banner-testo">Testo della fascia</label>
+          <input type="text" id="banner-testo">
+          <p class="aiuto">Qui vanno inaugurazione, saldi o sottocosto. Una riga sola.</p>
+        </div>
+      </div>
+
+      <div class="blocco">
+        <h2>Titolo grande della home</h2>
+        <div class="campo">
+          <label for="hero-titolo">Titolo</label>
+          <textarea id="hero-titolo" rows="2"></textarea>
+          <p class="aiuto">Massimo 65 caratteri. Dopo il 27 marzo 2027 scrivi:
+            <em>Scarpe e abbigliamento a Lido degli Scacchi, Comacchio</em>.
+            <span id="conta-titolo"></span></p>
+        </div>
+        <div class="campo">
+          <label for="hero-t1">Sotto il titolo</label>
+          <textarea id="hero-t1" rows="2"></textarea>
+          <p class="aiuto">Vai a capo dove vuoi che vada a capo.</p>
+        </div>
+        <div class="campo">
+          <label for="hero-t2">Riga sopra i pulsanti</label>
+          <input type="text" id="hero-t2">
+        </div>
+      </div>
+
+      <div class="blocco">
+        <h2>Sezione inaugurazione</h2>
+        <label class="sw"><input type="checkbox" id="inaug-attiva"><i></i><span>Mostra la sezione</span></label>
+        <p class="aiuto" style="margin:8px 0 16px">Dopo l’apertura si spegne da qui: non serve cancellarla.</p>
+        <div class="campo"><label for="inaug-titolo">Titolo</label><input type="text" id="inaug-titolo"></div>
+        <div class="campo"><label for="inaug-orari">Data e orari</label><input type="text" id="inaug-orari"></div>
+        <div class="campo"><label for="inaug-sconto">Sconto e buffet</label><input type="text" id="inaug-sconto"></div>
+        <div class="campo"><label for="inaug-pulsante">Testo del pulsante</label><input type="text" id="inaug-pulsante"></div>
+      </div>
+
+      <div class="blocco">
+        <h2>Pagina «La nostra storia»</h2>
+        <div class="campo">
+          <label for="chisiamo-tit">Titolo dell’ultimo blocco</label>
+          <input type="text" id="chisiamo-tit">
+          <p class="aiuto">Dopo l’apertura diventa <em>Ti aspettiamo in negozio</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CATALOGO ── -->
+    <section id="t-catalogo" hidden>
+      <div class="blocco">
+        <h2>Categorie</h2>
+        <div id="lista-cat"></div>
+        <div class="riga-btn" style="margin-top:14px">
+          <button class="btn btn-2 btn-sm" id="agg-cat" type="button">Aggiungi categoria</button>
+        </div>
+        <p class="aiuto" style="margin-top:10px">Una categoria si cancella solo se non ha prodotti dentro.</p>
+      </div>
+
+      <div class="blocco">
+        <h2>Prodotti</h2>
+        <div class="barra-p">
+          <input type="text" id="cerca" placeholder="Cerca un modello">
+          <select id="filtro-cat"><option value="">Tutte le categorie</option></select>
+          <button class="btn btn-1 btn-sm" id="agg-prod" type="button">Aggiungi prodotto</button>
+        </div>
+        <div class="lista" id="lista-prod"></div>
+      </div>
+    </section>
+
+    <!-- ── MESSAGGI ── -->
+    <section id="t-messaggi" hidden>
+      <div class="blocco">
+        <h2>Messaggi già scritti</h2>
+        <p class="aiuto" style="margin-bottom:16px">
+          Nei messaggi del prodotto puoi usare <b>{NOME}</b> per il nome del modello e
+          <b>{TAGLIA}</b> per il numero scelto.
+        </p>
+        <div class="campo">
+          <label for="m-prodotto">Dalla scheda prodotto, con il numero scelto</label>
+          <textarea id="m-prodotto" rows="2"></textarea>
+        </div>
+        <div class="campo">
+          <label for="m-prodotto2">Dalla scheda prodotto, senza numero</label>
+          <textarea id="m-prodotto2" rows="2"></textarea>
+        </div>
+        <div class="campo">
+          <label for="m-generico">Dai pulsanti WhatsApp del sito</label>
+          <textarea id="m-generico" rows="2"></textarea>
+        </div>
+        <div class="campo">
+          <label for="m-inaug">Dal pulsante dell’inaugurazione</label>
+          <textarea id="m-inaug" rows="2"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── IMPOSTAZIONI ── -->
+    <section id="t-impostazioni" hidden>
+      <div class="blocco">
+        <h2>Contatti e indirizzo</h2>
+        <div class="due">
+          <div class="campo">
+            <label for="wa">Numero WhatsApp, solo cifre</label>
+            <input type="text" id="wa" inputmode="numeric">
+            <p class="aiuto">Con il prefisso e senza spazi: 393408737943.</p>
+          </div>
+          <div class="campo">
+            <label for="wa-testo">Numero come si legge in pagina</label>
+            <input type="text" id="wa-testo">
+          </div>
+        </div>
+        <div class="campo"><label for="email">Email</label><input type="email" id="email"></div>
+        <div class="due">
+          <div class="campo"><label for="via">Via e numero</label><input type="text" id="via"></div>
+          <div class="campo"><label for="citta">Località</label><input type="text" id="citta"></div>
+        </div>
+        <div class="campo">
+          <label for="maps">Indirizzo della mappa</label>
+          <input type="url" id="maps">
+          <p class="aiuto">Il link che si apre toccando «Apri la mappa».</p>
+        </div>
+      </div>
+
+      <div class="blocco">
+        <h2>Copia di sicurezza</h2>
+        <p class="aiuto" style="margin-bottom:14px">Scarica tutto prima di fare modifiche grosse.</p>
+        <div class="riga-btn">
+          <button class="btn btn-2 btn-sm" id="scarica" type="button">Scarica i contenuti</button>
+          <button class="btn btn-2 btn-sm" id="carica" type="button">Carica un file</button>
+          <input type="file" id="file-json" accept="application/json" hidden>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="salva">
+    <div class="salva-in">
+      <span class="stato" id="stato">&nbsp;</span>
+      <button class="btn btn-1" id="btn-salva" type="button">Salva</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════ FINESTRA PRODOTTO ══════════════════ -->
+<div class="fin-bg" id="fin-bg"></div>
+<div class="fin" id="fin">
+  <div class="fin-top">
+    <h2 id="fin-tit">Prodotto</h2>
+    <button class="fin-close" id="fin-close" type="button">Chiudi</button>
+  </div>
+  <div class="campo"><label for="p-nome">Nome del modello</label><input type="text" id="p-nome"></div>
+  <div class="due">
+    <div class="campo">
+      <label for="p-cat">Categoria</label>
+      <select id="p-cat"></select>
+    </div>
+    <div class="campo">
+      <label for="p-stato">Stato</label>
+      <select id="p-stato">
+        <option value="disponibile">Si può richiedere</option>
+        <option value="finito">Finito, resta in pagina</option>
+        <option value="nascosto">Nascosto dal sito</option>
+      </select>
+    </div>
+  </div>
+  <div class="campo">
+    <label for="p-alt">Descrizione della foto</label>
+    <textarea id="p-alt" rows="2"></textarea>
+    <p class="aiuto">Racconta cosa si vede. La leggono i motori di ricerca e chi non vede l’immagine.</p>
+  </div>
+  <div class="campo">
+    <label>Numeri disponibili</label>
+    <div class="taglie" id="p-taglie"></div>
+    <div class="riga-btn" style="margin-top:10px">
+      <input type="text" id="p-nuova-taglia" placeholder="38" style="max-width:110px;min-height:38px">
+      <button class="btn btn-2 btn-sm" id="p-agg-taglia" type="button">Aggiungi</button>
+    </div>
+    <p class="aiuto">Senza numeri la scheda dice «Chiedi la tua misura in chat».</p>
+  </div>
+  <div class="campo">
+    <label>Foto</label>
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+      <div class="anteprima"><img id="p-ant" alt=""></div>
+      <div style="flex:1;min-width:200px">
+        <div class="riga-btn">
+          <button class="btn btn-2 btn-sm" id="p-carica-foto" type="button">Cambia foto</button>
+          <input type="file" id="p-file" accept="image/*" hidden>
+        </div>
+        <p class="aiuto" style="margin-top:8px">La foto viene ritagliata in verticale e alleggerita da sola.</p>
+      </div>
+    </div>
+  </div>
+  <div class="riga-btn" style="margin-top:22px">
+    <button class="btn btn-1" id="p-ok" type="button">Salva il prodotto</button>
+    <button class="btn btn-ko" id="p-elimina" type="button">Elimina</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return [].slice.call((r || document).querySelectorAll(s)); };
+
+  var D = null;               // i contenuti
+  var API = true;             // c'è il worker?
+  var sporco = false;
+  var inLavorazione = null;   // prodotto aperto nella finestra
+  var CHIAVE_BOZZA = 'mmdt:bozza';
+
+  /* ───────────────────────── accesso ───────────────────────── */
+  function stato(msg, tipo) {
+    var el = $('#stato');
+    el.textContent = msg || ' ';
+    el.className = 'stato' + (tipo ? ' ' + tipo : '');
+  }
+
+  fetch('/api/stato', { headers: { accept: 'application/json' } })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (s) {
+      API = true;
+      if (s.dentro) entra();
+      else if (!s.configurato) {
+        $('#stato-accesso').textContent =
+          'Il pannello non è ancora configurato su Cloudflare: mancano PANNELLO_CHIAVE e PANNELLO_SEGRETO.';
+        $('#stato-accesso').className = 'stato ko';
+      }
+    })
+    .catch(function () { API = false; entra(); });   // anteprima locale
+
+  $('#form-accesso').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = $('#stato-accesso');
+    msg.textContent = 'Un attimo…'; msg.className = 'stato';
+    fetch('/api/accesso', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ chiave: $('#chiave').value })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok) { msg.textContent = x.j.errore || 'Non è andata.'; msg.className = 'stato ko'; return; }
+        entra();
+      })
+      .catch(function () { msg.textContent = 'Il server non risponde.'; msg.className = 'stato ko'; });
+  });
+
+  $('#esci').addEventListener('click', function () {
+    if (sporco && !confirm('Ci sono modifiche non salvate. Esci lo stesso?')) return;
+    fetch('/api/uscita', { method: 'POST' }).finally(function () { location.reload(); });
+  });
+
+  function entra() {
+    $('#gate').hidden = true;
+    $('#app').hidden = false;
+    if (!API) {
+      var a = $('#avviso-locale');
+      a.hidden = false;
+      a.innerHTML = 'Stai lavorando in <b>anteprima locale</b>: le modifiche restano su questo computer. ' +
+        'Con «Salva» finiscono nella bozza del browser, e le vedi aggiungendo <b>?bozza=1</b> all’indirizzo del sito. ' +
+        'Per metterle online serve il sito pubblicato su Cloudflare.';
+    }
+    carica();
+  }
+
+  /* ───────────────────────── dati ───────────────────────── */
+  function carica() {
+    var seme = function () { return fetch('../data/contenuti.json').then(function (r) { return r.json(); }); };
+    var p;
+    if (API) {
+      p = fetch('/api/contenuti', { headers: { accept: 'application/json' } })
+        .then(function (r) { return (r.status === 204 || !r.ok) ? seme() : r.json(); })
+        .catch(seme);
+    } else {
+      var b = null;
+      try { b = localStorage.getItem(CHIAVE_BOZZA); } catch (e) { }
+      p = b ? Promise.resolve(JSON.parse(b)) : seme();
+    }
+    p.then(function (d) { D = d; disegna(); stato('Contenuti caricati.'); })
+     .catch(function () { stato('Non riesco a leggere i contenuti.', 'ko'); });
+  }
+
+  function tocca() { sporco = true; stato('Modifiche da salvare.'); }
+
+  function salva() {
+    if (!D) return;
+    raccogli();
+    var guaio = controlla(D);
+    if (guaio) { stato(guaio, 'ko'); return; }
+    if (!API) {
+      try {
+        localStorage.setItem(CHIAVE_BOZZA, JSON.stringify(D));
+        sporco = false; stato('Salvato nella bozza di questo browser.', 'ok');
+      } catch (e) { stato('La bozza non ci sta nel browser: scarica il file.', 'ko'); }
+      return;
+    }
+    stato('Salvo…');
+    fetch('/api/contenuti', {
+      method: 'PUT', headers: { 'content-type': 'application/json' }, body: JSON.stringify(D)
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (x) {
+        if (!x.ok) { stato(x.j.errore || 'Non salvato.', 'ko'); return; }
+        sporco = false;
+        D.versione = x.j.versione;
+        stato('Salvato. Versione ' + x.j.versione + '.', 'ok');
+      })
+      .catch(function () { stato('Il server non risponde.', 'ko'); });
+  }
+
+  function controlla(d) {
+    if (!/^\d{8,15}$/.test(String(d.impostazioni.whatsapp || '')))
+      return 'Il numero WhatsApp va scritto solo con le cifre.';
+    if (!d.home.heroTitolo.trim()) return 'Il titolo della home non può restare vuoto.';
+    if (d.home.heroTitolo.length > 65) return 'Il titolo della home supera i 65 caratteri.';
+    var ids = {};
+    for (var i = 0; i < d.categorie.length; i++) {
+      var c = d.categorie[i];
+      if (!c.nome.trim()) return 'C’è una categoria senza nome.';
+      if (ids[c.id]) return 'Due categorie hanno lo stesso codice.';
+      ids[c.id] = 1;
+    }
+    for (var j = 0; j < d.prodotti.length; j++) {
+      var p = d.prodotti[j];
+      if (!p.nome.trim()) return 'C’è un prodotto senza nome.';
+      if (!ids[p.categoria]) return 'Il prodotto «' + p.nome + '» punta a una categoria che non esiste.';
+    }
+    return null;
+  }
+
+  $('#btn-salva').addEventListener('click', salva);
+  addEventListener('beforeunload', function (e) {
+    if (sporco) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  /* ───────────────────────── schede ───────────────────────── */
+  $$('.tabs button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      $$('.tabs button').forEach(function (x) { x.setAttribute('aria-selected', x === b); });
+      ['testi', 'catalogo', 'messaggi', 'impostazioni'].forEach(function (n) {
+        $('#t-' + n).hidden = n !== b.dataset.tab;
+      });
+    });
+  });
+
+  /* ───────────────────────── disegna ───────────────────────── */
+  function v(id, val) { var e = $(id); if (e) e.value = val == null ? '' : val; }
+  function c(id, val) { var e = $(id); if (e) e.checked = !!val; }
+
+  function disegna() {
+    v('#banner-testo', D.banner.testo); c('#banner-attivo', D.banner.attivo);
+    v('#hero-titolo', D.home.heroTitolo); v('#hero-t1', D.home.heroTesto1); v('#hero-t2', D.home.heroTesto2);
+    c('#inaug-attiva', D.inaugurazione.attiva);
+    v('#inaug-titolo', D.inaugurazione.titolo); v('#inaug-orari', D.inaugurazione.orari);
+    v('#inaug-sconto', D.inaugurazione.sconto); v('#inaug-pulsante', D.inaugurazione.pulsante);
+    v('#chisiamo-tit', (D.chisiamo || {}).chiusuraTitolo);
+    v('#m-prodotto', D.messaggi.prodotto); v('#m-prodotto2', D.messaggi.prodottoSenzaTaglia);
+    v('#m-generico', D.messaggi.generico); v('#m-inaug', D.messaggi.inaugurazione);
+    v('#wa', D.impostazioni.whatsapp); v('#wa-testo', D.impostazioni.whatsappTesto);
+    v('#email', D.impostazioni.email); v('#via', D.impostazioni.via);
+    v('#citta', D.impostazioni.citta); v('#maps', D.impostazioni.maps);
+    contaTitolo();
+    categorie();
+    prodotti();
+  }
+
+  function raccogli() {
+    D.banner.testo = $('#banner-testo').value.trim();
+    D.banner.attivo = $('#banner-attivo').checked;
+    D.home.heroTitolo = $('#hero-titolo').value.trim();
+    D.home.heroTesto1 = $('#hero-t1').value;
+    D.home.heroTesto2 = $('#hero-t2').value.trim();
+    D.inaugurazione.attiva = $('#inaug-attiva').checked;
+    D.inaugurazione.titolo = $('#inaug-titolo').value.trim();
+    D.inaugurazione.orari = $('#inaug-orari').value.trim();
+    D.inaugurazione.sconto = $('#inaug-sconto').value.trim();
+    D.inaugurazione.pulsante = $('#inaug-pulsante').value.trim();
+    D.chisiamo = D.chisiamo || {};
+    D.chisiamo.chiusuraTitolo = $('#chisiamo-tit').value.trim();
+    D.messaggi.prodotto = $('#m-prodotto').value.trim();
+    D.messaggi.prodottoSenzaTaglia = $('#m-prodotto2').value.trim();
+    D.messaggi.generico = $('#m-generico').value.trim();
+    D.messaggi.inaugurazione = $('#m-inaug').value.trim();
+    D.impostazioni.whatsapp = $('#wa').value.replace(/\D/g, '');
+    D.impostazioni.whatsappTesto = $('#wa-testo').value.trim();
+    D.impostazioni.email = $('#email').value.trim();
+    D.impostazioni.via = $('#via').value.trim();
+    D.impostazioni.citta = $('#citta').value.trim();
+    D.impostazioni.maps = $('#maps').value.trim();
+  }
+
+  document.addEventListener('input', function (e) {
+    if (e.target.closest('#app') && !e.target.closest('#fin')) tocca();
+    if (e.target.id === 'hero-titolo') contaTitolo();
+  });
+  document.addEventListener('change', function (e) {
+    if (e.target.closest('#app') && !e.target.closest('#fin')) tocca();
+  });
+
+  function contaTitolo() {
+    var n = ($('#hero-titolo').value || '').length;
+    $('#conta-titolo').textContent = n + '/65';
+    $('#conta-titolo').style.color = n > 65 ? 'var(--ko)' : 'var(--ink-3)';
+  }
+
+  /* ───────────────────────── categorie ───────────────────────── */
+  function codice(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 28) || ('cat-' + Date.now());
+  }
+
+  function categorie() {
+    var box = $('#lista-cat');
+    box.innerHTML = '';
+    D.categorie.sort(function (a, b) { return (a.ordine || 0) - (b.ordine || 0); });
+    D.categorie.forEach(function (cat, i) {
+      var quanti = D.prodotti.filter(function (p) { return p.categoria === cat.id; }).length;
+      var r = document.createElement('div');
+      r.className = 'cat';
+      r.innerHTML =
+        '<input type="text" value="" aria-label="Nome della categoria">' +
+        '<span class="cod"></span>' +
+        '<span class="cat-btn">' +
+          '<button class="btn btn-2 btn-sm" data-su type="button" aria-label="Sposta su">↑</button>' +
+          '<button class="btn btn-2 btn-sm" data-giu type="button" aria-label="Sposta giù">↓</button>' +
+          '<button class="btn btn-ko btn-sm" data-via type="button">Togli</button>' +
+        '</span>';
+      $('input', r).value = cat.nome;
+      $('.cod', r).textContent = quanti === 0 ? 'vuota' : '';
+      $('input', r).addEventListener('input', function () { cat.nome = this.value; tocca(); });
+      $('[data-su]', r).addEventListener('click', function () { muovi(i, -1); });
+      $('[data-giu]', r).addEventListener('click', function () { muovi(i, 1); });
+      $('[data-via]', r).addEventListener('click', function () {
+        if (quanti) { alert('Prima sposta o togli i ' + quanti + ' prodotti che stanno in questa categoria.'); return; }
+        if (!confirm('Tolgo la categoria «' + cat.nome + '»?')) return;
+        D.categorie.splice(i, 1); rinumera(); categorie(); prodotti(); tocca();
+      });
+      box.appendChild(r);
+    });
+    var sel = $('#filtro-cat');
+    sel.innerHTML = '<option value="">Tutte le categorie</option>' +
+      D.categorie.map(function (c) { return '<option value="' + c.id + '">' + esc(c.nome) + '</option>'; }).join('');
+  }
+
+  function muovi(i, d) {
+    var j = i + d;
+    if (j < 0 || j >= D.categorie.length) return;
+    var t = D.categorie[i]; D.categorie[i] = D.categorie[j]; D.categorie[j] = t;
+    rinumera(); categorie(); tocca();
+  }
+  function rinumera() { D.categorie.forEach(function (c, i) { c.ordine = i + 1; }); }
+
+  $('#agg-cat').addEventListener('click', function () {
+    var nome = prompt('Come si chiama la categoria?');
+    if (!nome || !nome.trim()) return;
+    var id = codice(nome);
+    if (D.categorie.some(function (c) { return c.id === id; })) { alert('Questa categoria c’è già.'); return; }
+    D.categorie.push({ id: id, nome: nome.trim(), ordine: D.categorie.length + 1 });
+    categorie(); tocca();
+  });
+
+  /* ───────────────────────── prodotti ───────────────────────── */
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (m) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m];
+    });
+  }
+
+  function fotoDi(p) {
+    if (p.imgData) return p.imgData;
+    return '../assets/img/prodotti/' + p.img + '-sm.webp';
+  }
+
+  function nomeCat(id) {
+    var c = D.categorie.filter(function (x) { return x.id === id; })[0];
+    return c ? c.nome : '—';
+  }
+
+  function prodotti() {
+    var q = ($('#cerca').value || '').toLowerCase().trim();
+    var f = $('#filtro-cat').value;
+    var box = $('#lista-prod');
+    var lista = D.prodotti.slice().sort(function (a, b) { return (a.ordine || 0) - (b.ordine || 0); })
+      .filter(function (p) {
+        if (f && p.categoria !== f) return false;
+        if (q && p.nome.toLowerCase().indexOf(q) < 0) return false;
+        return true;
+      });
+    if (!lista.length) { box.innerHTML = '<p class="vuoto">Nessun prodotto con questa ricerca.</p>'; return; }
+    box.innerHTML = '';
+    lista.forEach(function (p) {
+      var r = document.createElement('div');
+      r.className = 'pr';
+      var etichetta = p.stato === 'nascosto' ? '<span class="tag ko">nascosto</span>'
+        : p.stato === 'finito' ? '<span class="tag ko">finito</span>' : '';
+      r.innerHTML =
+        '<span class="pr-img"><img loading="lazy" alt="" src="' + esc(fotoDi(p)) + '"></span>' +
+        '<span class="pr-t"><b>' + esc(p.nome) + etichetta + '</b>' +
+        '<small>' + esc(nomeCat(p.categoria)) + ' · ' +
+        (p.taglie && p.taglie.length ? p.taglie.join(' ') : 'nessun numero') + '</small></span>' +
+        '<button class="btn btn-2 btn-sm" type="button">Apri</button>';
+      $('button', r).addEventListener('click', function () { apri(p); });
+      box.appendChild(r);
+    });
+  }
+
+  $('#cerca').addEventListener('input', prodotti);
+  $('#filtro-cat').addEventListener('change', prodotti);
+
+  $('#agg-prod').addEventListener('click', function () {
+    if (!D.categorie.length) { alert('Prima crea almeno una categoria.'); return; }
+    var p = {
+      id: 'p' + Date.now().toString(36),
+      nome: '', categoria: D.categorie[0].id, img: 'sa-01', alt: '',
+      taglie: ['35', '36', '37', '38', '39', '40', '41'],
+      stato: 'disponibile',
+      ordine: D.prodotti.length ? Math.max.apply(null, D.prodotti.map(function (x) { return x.ordine || 0; })) + 1 : 0,
+      nuovo: true
+    };
+    apri(p);
+  });
+
+  /* ── finestra prodotto ── */
+  function apri(p) {
+    inLavorazione = p;
+    $('#fin-tit').textContent = p.nuovo ? 'Nuovo prodotto' : 'Prodotto';
+    $('#p-nome').value = p.nome;
+    $('#p-cat').innerHTML = D.categorie.map(function (c) {
+      return '<option value="' + c.id + '"' + (c.id === p.categoria ? ' selected' : '') + '>' + esc(c.nome) + '</option>';
+    }).join('');
+    $('#p-stato').value = p.stato || 'disponibile';
+    $('#p-alt').value = p.alt || '';
+    $('#p-ant').src = fotoDi(p);
+    $('#p-elimina').style.display = p.nuovo ? 'none' : '';
+    taglie();
+    $('#fin').classList.add('on');
+    $('#fin-bg').classList.add('on');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { $('#p-nome').focus(); }, 50);
+  }
+
+  function chiudi() {
+    $('#fin').classList.remove('on');
+    $('#fin-bg').classList.remove('on');
+    document.body.style.overflow = '';
+    inLavorazione = null;
+  }
+  $('#fin-close').addEventListener('click', chiudi);
+  $('#fin-bg').addEventListener('click', chiudi);
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' && inLavorazione) chiudi(); });
+
+  function taglie() {
+    var box = $('#p-taglie');
+    var lista = inLavorazione.taglie || [];
+    box.innerHTML = '';
+    if (!lista.length) { box.innerHTML = '<span class="aiuto">Nessun numero caricato.</span>'; }
+    lista.forEach(function (t, i) {
+      var s = document.createElement('span');
+      s.className = 'taglia';
+      s.innerHTML = '<span></span><button type="button" aria-label="Togli il numero">×</button>';
+      $('span', s).textContent = t;
+      $('button', s).addEventListener('click', function () { lista.splice(i, 1); taglie(); });
+      box.appendChild(s);
+    });
+  }
+
+  $('#p-agg-taglia').addEventListener('click', function () {
+    var t = $('#p-nuova-taglia').value.trim();
+    if (!t) return;
+    inLavorazione.taglie = inLavorazione.taglie || [];
+    if (inLavorazione.taglie.indexOf(t) < 0) inLavorazione.taglie.push(t);
+    $('#p-nuova-taglia').value = '';
+    taglie();
+  });
+  $('#p-nuova-taglia').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); $('#p-agg-taglia').click(); }
+  });
+
+  $('#p-carica-foto').addEventListener('click', function () { $('#p-file').click(); });
+  $('#p-file').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    ridimensiona(f, function (dataUrl, peso) {
+      inLavorazione.imgData = dataUrl;
+      $('#p-ant').src = dataUrl;
+      stato('Foto pronta, ' + Math.round(peso / 1024) + ' KB. Ricordati di salvare.');
+    });
+    this.value = '';
+  });
+
+  function ridimensiona(file, fatto) {
+    var img = new Image();
+    var url = URL.createObjectURL(file);
+    img.onload = function () {
+      var W = 760, H = 950;                       // stesso taglio 4:5 delle altre foto
+      var cv = document.createElement('canvas');
+      cv.width = W; cv.height = H;
+      var cx = cv.getContext('2d');
+      cx.fillStyle = '#fff'; cx.fillRect(0, 0, W, H);
+      var s = Math.max(W / img.width, H / img.height);
+      var w = img.width * s, h = img.height * s;
+      cx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h);
+      URL.revokeObjectURL(url);
+      var out = cv.toDataURL('image/webp', 0.72);
+      if (out.indexOf('data:image/webp') !== 0) out = cv.toDataURL('image/jpeg', 0.78);
+      fatto(out, out.length * 0.75);
+    };
+    img.onerror = function () { alert('Questa immagine non si apre.'); URL.revokeObjectURL(url); };
+    img.src = url;
+  }
+
+  $('#p-ok').addEventListener('click', function () {
+    var p = inLavorazione;
+    if (!p) return;
+    var nome = $('#p-nome').value.trim();
+    if (!nome) { alert('Il prodotto ha bisogno di un nome.'); return; }
+    p.nome = nome;
+    p.categoria = $('#p-cat').value;
+    p.stato = $('#p-stato').value;
+    p.alt = $('#p-alt').value.trim();
+    if (p.nuovo) { delete p.nuovo; D.prodotti.push(p); }
+    chiudi(); prodotti(); categorie(); tocca();
+  });
+
+  $('#p-elimina').addEventListener('click', function () {
+    var p = inLavorazione;
+    if (!p || !confirm('Elimino «' + p.nome + '»? Non si torna indietro.')) return;
+    var i = D.prodotti.indexOf(p);
+    if (i > -1) D.prodotti.splice(i, 1);
+    chiudi(); prodotti(); categorie(); tocca();
+  });
+
+  /* ───────────────────────── copia di sicurezza ───────────────────────── */
+  $('#scarica').addEventListener('click', function () {
+    raccogli();
+    var b = new Blob([JSON.stringify(D, null, 1)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = 'contenuti.json';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 2000);
+  });
+
+  $('#carica').addEventListener('click', function () { $('#file-json').click(); });
+  $('#file-json').addEventListener('change', function () {
+    var f = this.files && this.files[0];
+    if (!f) return;
+    var fr = new FileReader();
+    fr.onload = function () {
+      try {
+        var d = JSON.parse(fr.result);
+        if (!d.prodotti || !d.categorie) throw 0;
+        D = d; disegna(); tocca();
+        stato('File caricato. Controlla e poi salva.', 'ok');
+      } catch (e) { stato('Questo file non va bene.', 'ko'); }
+    };
+    fr.readAsText(f);
+    this.value = '';
+  });
+})();
+</script>
+</body>
+</html>
